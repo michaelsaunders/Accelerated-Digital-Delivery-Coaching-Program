@@ -1,0 +1,60 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.IterationGoal
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>IterationGoal</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Goal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Goal)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Specific)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Specific)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Measurable)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Measurable)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Achievable)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Achievable)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Realistic)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Realistic)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Timebound)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Timebound)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TiedToOKR)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TiedToOKR)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IterationGoalID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

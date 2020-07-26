@@ -1,0 +1,49 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.ProductBacklogItem
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ProductBacklogItem</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ProductBacklogItemId" />
+            <div class="form-group">
+                <label asp-for="ProductBacklogItemName" class="control-label"></label>
+                <input asp-for="ProductBacklogItemName" class="form-control" />
+                <span asp-validation-for="ProductBacklogItemName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AcceptanceCriteria" class="control-label"></label>
+                <input asp-for="AcceptanceCriteria" class="form-control" />
+                <span asp-validation-for="AcceptanceCriteria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComparativePoints" class="control-label"></label>
+                <input asp-for="ComparativePoints" class="form-control" />
+                <span asp-validation-for="ComparativePoints" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductBacklogId" class="control-label"></label>
+                <select asp-for="ProductBacklogId" class="form-control" asp-items="ViewBag.ProductBacklogId"></select>
+                <span asp-validation-for="ProductBacklogId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

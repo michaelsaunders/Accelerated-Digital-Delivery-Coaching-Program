@@ -1,0 +1,67 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.ProductBacklog
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<style>
+    .product-backlog-items {
+        border: 2px dotted black;
+        border-radius: 5px;
+        padding: 10px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        align-content: center;
+    }
+</style>
+
+<hr />
+<div>
+    <center>
+        <h4>@Html.DisplayFor(model => model.ProductBacklogName) Product Backlog</h4>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.ProductBacklogID">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </center>
+</div>
+<hr />
+
+<table class="table">
+    <thead>
+        <tr class="table-expand-row">
+            <th width="200">Ticket Code</th>
+            <th>Backlog Item Name</th>
+            <th class="text-right" width="150">Type</th>
+            <th width="150">Status</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model.ProductBacklogItems)
+    {
+     <tbody>
+        <tr class="table-expand-row" data-open-details>
+           <td>@item.ProductBacklogItemId</td>
+           <td>@item.ProductBacklogItemName</td>
+           <td></td>
+           <td></td>
+        </tr>
+     </tbody>
+    }
+</table>
+
+<ul id="sortable-list">
+    <li>Hi 1</li>
+    <li>Hi 2</li>
+</ul>
+<script>
+    function makesortable() {
+        alert("john");
+        $("#sortable").sortable();
+        if (jQuery.ui) {
+            alert("Yes");
+        } else {
+            alert("No");
+        };
+    }
+</script>

@@ -16,6 +16,9 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Models
 
         public DateTime LastYesterdaysWeatherUpdate { get; set; }
 
+        public Person TeamLead { get; set; }
+
+        public Person TeamCoach { get; set; }
 
     }
 }

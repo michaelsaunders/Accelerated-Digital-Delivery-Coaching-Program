@@ -1,0 +1,109 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.OKR
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>OKR</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="OkrID" />
+            <div class="form-group">
+                <label asp-for="Objective" class="control-label"></label>
+                <input asp-for="Objective" class="form-control" />
+                <span asp-validation-for="Objective" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Measure1" class="control-label"></label>
+                <input asp-for="Measure1" class="form-control" />
+                <span asp-validation-for="Measure1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Measure2" class="control-label"></label>
+                <input asp-for="Measure2" class="form-control" />
+                <span asp-validation-for="Measure2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Measure3" class="control-label"></label>
+                <input asp-for="Measure3" class="form-control" />
+                <span asp-validation-for="Measure3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Measure4" class="control-label"></label>
+                <input asp-for="Measure4" class="form-control" />
+                <span asp-validation-for="Measure4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Measure5" class="control-label"></label>
+                <input asp-for="Measure5" class="form-control" />
+                <span asp-validation-for="Measure5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetricMeasure1" class="control-label"></label>
+                <input asp-for="MetricMeasure1" class="form-control" />
+                <span asp-validation-for="MetricMeasure1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetricMeasure2" class="control-label"></label>
+                <input asp-for="MetricMeasure2" class="form-control" />
+                <span asp-validation-for="MetricMeasure2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetricMeasure3" class="control-label"></label>
+                <input asp-for="MetricMeasure3" class="form-control" />
+                <span asp-validation-for="MetricMeasure3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetricMeasure4" class="control-label"></label>
+                <input asp-for="MetricMeasure4" class="form-control" />
+                <span asp-validation-for="MetricMeasure4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetricMeasure5" class="control-label"></label>
+                <input asp-for="MetricMeasure5" class="form-control" />
+                <span asp-validation-for="MetricMeasure5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfidenceScoreMeasure1" class="control-label"></label>
+                <input asp-for="ConfidenceScoreMeasure1" class="form-control" />
+                <span asp-validation-for="ConfidenceScoreMeasure1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfidenceScoreMeasure2" class="control-label"></label>
+                <input asp-for="ConfidenceScoreMeasure2" class="form-control" />
+                <span asp-validation-for="ConfidenceScoreMeasure2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfidenceScoreMeasure3" class="control-label"></label>
+                <input asp-for="ConfidenceScoreMeasure3" class="form-control" />
+                <span asp-validation-for="ConfidenceScoreMeasure3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfidenceScoreMeasure4" class="control-label"></label>
+                <input asp-for="ConfidenceScoreMeasure4" class="form-control" />
+                <span asp-validation-for="ConfidenceScoreMeasure4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfidenceScoreMeasure5" class="control-label"></label>
+                <input asp-for="ConfidenceScoreMeasure5" class="form-control" />
+                <span asp-validation-for="ConfidenceScoreMeasure5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

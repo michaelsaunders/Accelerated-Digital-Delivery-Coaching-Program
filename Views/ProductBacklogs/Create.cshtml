@@ -1,0 +1,38 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.ProductBacklog
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>ProductBacklog</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProductBacklogName" class="control-label"></label>
+                <input asp-for="ProductBacklogName" class="form-control" />
+                <span asp-validation-for="ProductBacklogName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductDefintionOfDone" class="control-label"></label>
+                <input asp-for="ProductDefintionOfDone" class="form-control" />
+                <span asp-validation-for="ProductDefintionOfDone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
