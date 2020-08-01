@@ -15,7 +15,8 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Models
 
         public TeamOfTeam TeamOfTeams { get;set;}
 
-
+        public ICollection<ProgramIncrementGoal> ProgramIncrementGoals { get; set; }
+        public ICollection<Iteration> Iterations { get; set; }
 
     }
 }

@@ -5,17 +5,19 @@ using System.Threading.Tasks;
 
 namespace Accelerated_Digital_Delivery_Coaching_Program.Models
 {
-    public class IterationGoal
+    public class ProgramIncrementGoal
     {
-        public Guid IterationGoalID { get; set; }
+        public Guid ProgramIncrementGoalID { get; set; }
 
         public string Goal { get; set; }
+
+        public string Measure { get; set; }
 
         public Boolean Specific { get; set; }
 
         public Boolean Measurable { get; set; }
 
-        public Boolean Achievable { get; set;  }
+        public Boolean Achievable { get; set; }
 
         public Boolean Realistic { get; set; }
 
@@ -23,11 +25,19 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Models
 
         public Boolean TiedToOKR { get; set; }
 
+        public long TeamID { get; set; }
+
+        public long BusinessValue { get; set; }
+
+        public long AcheivedValue { get; set;  }
+
+        public Boolean CommittedGoal { get; set; }
+
         public int FistOfFive { get; set; }
 
         public int CurrentStatus { get; set; }
 
-
-        public Iteration Iteration { get; set; }
+        public Guid ProgramIncrementID { get; set; }
+        public ProgramIncrement ProgramIncrement { get; set; }
     }
 }

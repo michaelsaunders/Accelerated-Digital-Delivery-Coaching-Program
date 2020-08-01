@@ -1,0 +1,120 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.ViewModels.TeamProgramDashboard;
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<hr />
+<h2>Team Information</h2>
+<div>
+    <hr />
+    <dl class="row">
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Team.TeamName)
+        </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Team.YesterdaysWeather)
+        </dd>
+    </dl>
+</div>
+<hr />
+<h2>Program Increment Goals</h2>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.ProgramIncrementGoals)
+        {
+
+        <div class="col-sm">
+            <div class="goalbox">
+                <center>
+                    @Html.DisplayFor(modelItem => item.Goal)
+                    @switch (item.FistOfFive)
+                    {
+                        case 1:
+                            <div><img src="/images/1-No-Confidence.PNG" /></div>
+                            break;
+                        case 2:
+                            <div><img src="/images/2-Little-Confidence.PNG" /></div>
+                            break;
+                        case 3:
+                            <div><img src="/images/3-Good-Confidence.PNG" /></div>
+                            break;
+                        case 4:
+                            <div><img src="/images/4-High-Confidence.PNG" /></div>
+                            break;
+                        case 5:
+                            <div><img src="/images/5-Very-High-Confidence.PNG" /></div>
+                            break;
+                    }
+
+                    @switch (item.CurrentStatus)
+                    {
+                        case 1:
+                            <div><img src="/images/1-Status-No-Impediments.PNG" /></div>
+                            <div>No Impediments</div>
+                            break;
+                        case 2:
+                            <div><img src="/images/2-Status-Impediments-No-Measurable-Impact.PNG" /></div>
+                            <div>Impediments - No Measurable Impact</div>
+                            break;
+                        case 3:
+                            <div><img src="/images/3-Status-Some-Impediments-Situation-Improving.PNG" /></div>
+                            <div>Some Impediments, Situation Improving</div>
+                            break;
+                        case 4:
+                            <div><img src="/images/4-Status-Some-Impediments-Situation-Stable.PNG" /></div>
+                            <div>Some Impediments, Situation Stable</div>
+                            break;
+                        case 5:
+                            <div><img src="/images/5-Status-Some-Impediments-Situations-Worsening.PNG" /></div>
+                            <div>Some Impediments, Situations Worsening</div>
+                            break;
+                        case 6:
+                            <div><img src="/images/6-Status-Team-Totally-Blocked.PNG" /></div>
+                            <div>Team Totally Blocked</div>
+                            break;
+                    }
+                </center>
+            </div>
+        </div>
+
+        }
+
+    </div>
+</div>
+
+<hr />
+<h2>Sprints / Iteration</h2>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.Iterations)
+        {
+        <dd class="col-sm-2">
+            <b>Iteration ID:</b> @Html.DisplayFor(modelItem => item.IterationID)<br>
+            <b>Iteration Name:</b> @Html.DisplayFor(modelItem => item.IterationName)<br>
+            <b>Start Date:</b> @Html.DisplayFor(modelItem => item.StartDate)<br>
+            <b>Finish Date:</b> @Html.DisplayFor(modelItem => item.StopDate)<br>
+            @switch (item.IterationGoal.FistOfFive)
+            {
+                case 1:
+                    <div><img src="/images/1-No-Confidence.PNG" /></div>
+                    break;
+                case 2:
+                    <div><img src="/images/2-Little-Confidence.PNG" /></div>
+                    break;
+                case 3:
+                    <div><img src="/images/3-Good-Confidence.PNG" /></div>
+                    break;
+                case 4:
+                    <div><img src="/images/4-High-Confidence.PNG" /></div>
+                    break;
+                case 5:
+                    <div><img src="/images/5-Very-High-Confidence.PNG" /></div>
+                    break;
+            }
+        </dd>
+        }
+    </div>
+</div>
+      

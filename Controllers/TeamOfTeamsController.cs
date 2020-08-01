@@ -42,6 +42,26 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
             return View(teamOfTeam);
         }
 
+        // GET: TeamOfTeams/PIBoard/{TeamofTeams ID}/{PI ID}
+        public async Task<IActionResult> PIBoard(Guid? id, Guid? ProgramIncrementID)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var teamOfTeam = await _context.TeamOfTeams
+                .FirstOrDefaultAsync(m => m.TeamOfTeamID == id);
+            if (teamOfTeam == null)
+            {
+                return NotFound();
+            }
+
+            return View(teamOfTeam);
+        }
+
+
+
         // GET: TeamOfTeams/Create
         public IActionResult Create()
         {

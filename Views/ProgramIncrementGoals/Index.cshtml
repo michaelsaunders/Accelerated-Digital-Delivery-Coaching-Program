@@ -1,0 +1,119 @@
+﻿@model IEnumerable<Accelerated_Digital_Delivery_Coaching_Program.Models.ProgramIncrementGoal>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Goal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Measure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Specific)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Measurable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Achievable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Realistic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timebound)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TiedToOKR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcheivedValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommittedGoal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FistOfFive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProgramIncrement)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Goal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Measure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Specific)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Measurable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Achievable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Realistic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timebound)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TiedToOKR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AcheivedValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommittedGoal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FistOfFive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProgramIncrement.ProgramIncrementID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProgramIncrementGoalID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProgramIncrementGoalID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProgramIncrementGoalID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

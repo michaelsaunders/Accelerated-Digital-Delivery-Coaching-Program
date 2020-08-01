@@ -4,14 +4,16 @@ using Accelerated_Digital_Delivery_Coaching_Program.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
 {
     [DbContext(typeof(AddDBContext))]
-    partial class AddDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200728222453_TeamstoIterations")]
+    partial class TeamstoIterations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,12 +71,6 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
 
                     b.Property<bool>("Achievable")
                         .HasColumnType("bit");
-
-                    b.Property<int>("CurrentStatus")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FistOfFive")
-                        .HasColumnType("int");
 
                     b.Property<string>("Goal")
                         .HasColumnType("nvarchar(max)");
@@ -260,64 +256,6 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                     b.ToTable("ProgramIncrements");
                 });
 
-            modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.ProgramIncrementGoal", b =>
-                {
-                    b.Property<Guid>("ProgramIncrementGoalID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<long>("AcheivedValue")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool>("Achievable")
-                        .HasColumnType("bit");
-
-                    b.Property<long>("BusinessValue")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool>("CommittedGoal")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("CurrentStatus")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FistOfFive")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Goal")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Measurable")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Measure")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("ProgramIncrementID")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("Realistic")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Specific")
-                        .HasColumnType("bit");
-
-                    b.Property<long>("TeamID")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool>("TiedToOKR")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Timebound")
-                        .HasColumnType("bit");
-
-                    b.HasKey("ProgramIncrementGoalID");
-
-                    b.HasIndex("ProgramIncrementID");
-
-                    b.ToTable("ProgramIncrementGoal");
-                });
-
             modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.Sequence", b =>
                 {
                     b.Property<Guid>("SequenceID")
@@ -434,11 +372,11 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                         .IsRequired();
 
                     b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.ProgramIncrement", "ProgramIncrement")
-                        .WithMany("Iterations")
+                        .WithMany()
                         .HasForeignKey("ProgramIncrementID");
 
                     b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.Team", "Team")
-                        .WithMany()
+                        .WithMany("Iteration")
                         .HasForeignKey("TeamID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -458,15 +396,6 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                     b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.TeamOfTeam", "TeamOfTeams")
                         .WithMany()
                         .HasForeignKey("TeamOfTeamsTeamOfTeamID");
-                });
-
-            modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.ProgramIncrementGoal", b =>
-                {
-                    b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.ProgramIncrement", "ProgramIncrement")
-                        .WithMany("ProgramIncrementGoals")
-                        .HasForeignKey("ProgramIncrementID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.Team", b =>

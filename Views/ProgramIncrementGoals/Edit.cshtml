@@ -1,0 +1,104 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.ProgramIncrementGoal
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ProgramIncrementGoal</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ProgramIncrementGoalID" />
+            <div class="form-group">
+                <label asp-for="Goal" class="control-label"></label>
+                <input asp-for="Goal" class="form-control" />
+                <span asp-validation-for="Goal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Measure" class="control-label"></label>
+                <input asp-for="Measure" class="form-control" />
+                <span asp-validation-for="Measure" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Specific" /> @Html.DisplayNameFor(model => model.Specific)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Measurable" /> @Html.DisplayNameFor(model => model.Measurable)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Achievable" /> @Html.DisplayNameFor(model => model.Achievable)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Realistic" /> @Html.DisplayNameFor(model => model.Realistic)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Timebound" /> @Html.DisplayNameFor(model => model.Timebound)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="TiedToOKR" /> @Html.DisplayNameFor(model => model.TiedToOKR)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeamID" class="control-label"></label>
+                <input asp-for="TeamID" class="form-control" />
+                <span asp-validation-for="TeamID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BusinessValue" class="control-label"></label>
+                <input asp-for="BusinessValue" class="form-control" />
+                <span asp-validation-for="BusinessValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AcheivedValue" class="control-label"></label>
+                <input asp-for="AcheivedValue" class="form-control" />
+                <span asp-validation-for="AcheivedValue" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="CommittedGoal" /> @Html.DisplayNameFor(model => model.CommittedGoal)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="FistOfFive" class="control-label"></label>
+                <input asp-for="FistOfFive" class="form-control" />
+                <span asp-validation-for="FistOfFive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentStatus" class="control-label"></label>
+                <input asp-for="CurrentStatus" class="form-control" />
+                <span asp-validation-for="CurrentStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProgramIncrementID" class="control-label"></label>
+                <select asp-for="ProgramIncrementID" class="form-control" asp-items="ViewBag.ProgramIncrementID"></select>
+                <span asp-validation-for="ProgramIncrementID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -29,10 +29,10 @@
             @Html.DisplayFor(model => model.StopDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Team)
+            @Html.DisplayNameFor(model => model.Team.TeamName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Team.TeamID)
+            @Html.DisplayFor(model => model.Team.TeamName)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CompletedWork)
@@ -50,7 +50,7 @@
             @Html.DisplayNameFor(model => model.IterationGoal)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IterationGoal.IterationGoalID)
+            @Html.DisplayFor(model => model.IterationGoal.Goal)
         </dd>
     </dl>
 </div>

@@ -48,8 +48,8 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
         // GET: Iterations/Create
         public IActionResult Create()
         {
-            ViewData["IterationGoalID"] = new SelectList(_context.IterationGoal, "IterationGoalID", "IterationGoalID");
-            ViewData["TeamID"] = new SelectList(_context.Teams, "TeamID", "TeamID");
+            ViewData["IterationGoalID"] = new SelectList(_context.IterationGoal, "IterationGoalID", "Goal");
+            ViewData["TeamID"] = new SelectList(_context.Teams, "TeamID", "TeamName");
             return View();
         }
 
@@ -85,8 +85,8 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
             {
                 return NotFound();
             }
-            ViewData["IterationGoalID"] = new SelectList(_context.IterationGoal, "IterationGoalID", "IterationGoalID", iteration.IterationGoalID);
-            ViewData["TeamID"] = new SelectList(_context.Teams, "TeamID", "TeamID", iteration.TeamID);
+            ViewData["IterationGoalID"] = new SelectList(_context.IterationGoal, "IterationGoalID", "Goal", iteration.IterationGoalID);
+            ViewData["TeamID"] = new SelectList(_context.Teams, "TeamID", "TeamName", iteration.TeamID);
             return View(iteration);
         }
 

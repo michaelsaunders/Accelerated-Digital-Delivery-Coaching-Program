@@ -4,14 +4,16 @@ using Accelerated_Digital_Delivery_Coaching_Program.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
 {
     [DbContext(typeof(AddDBContext))]
-    partial class AddDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200731193829_ProgramIncrementGoals")]
+    partial class ProgramIncrementGoals
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,12 +71,6 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
 
                     b.Property<bool>("Achievable")
                         .HasColumnType("bit");
-
-                    b.Property<int>("CurrentStatus")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FistOfFive")
-                        .HasColumnType("int");
 
                     b.Property<string>("Goal")
                         .HasColumnType("nvarchar(max)");
@@ -266,23 +262,8 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("AcheivedValue")
-                        .HasColumnType("bigint");
-
                     b.Property<bool>("Achievable")
                         .HasColumnType("bit");
-
-                    b.Property<long>("BusinessValue")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool>("CommittedGoal")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("CurrentStatus")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FistOfFive")
-                        .HasColumnType("int");
 
                     b.Property<string>("Goal")
                         .HasColumnType("nvarchar(max)");
@@ -301,9 +282,6 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
 
                     b.Property<bool>("Specific")
                         .HasColumnType("bit");
-
-                    b.Property<long>("TeamID")
-                        .HasColumnType("bigint");
 
                     b.Property<bool>("TiedToOKR")
                         .HasColumnType("bit");

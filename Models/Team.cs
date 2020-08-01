@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Policy;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Models
 {
     public class Team
     {
+        [Key]
         public long TeamID { get; set; }
 
         public string TeamName { get; set; }

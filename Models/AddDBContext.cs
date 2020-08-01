@@ -41,6 +41,8 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Models
 
         public DbSet<Accelerated_Digital_Delivery_Coaching_Program.Models.IterationGoal> IterationGoal { get; set; }
 
+        public DbSet<Accelerated_Digital_Delivery_Coaching_Program.Models.ProgramIncrementGoal> ProgramIncrementGoal { get; set; }
+
 
     }
 }

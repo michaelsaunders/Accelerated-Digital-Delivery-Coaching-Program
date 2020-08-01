@@ -1,0 +1,108 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.ProgramIncrementGoal
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ProgramIncrementGoal</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Goal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Goal)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Measure)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Measure)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Specific)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Specific)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Measurable)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Measurable)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Achievable)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Achievable)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Realistic)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Realistic)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Timebound)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Timebound)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TiedToOKR)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TiedToOKR)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TeamID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TeamID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BusinessValue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BusinessValue)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AcheivedValue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AcheivedValue)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CommittedGoal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CommittedGoal)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FistOfFive)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FistOfFive)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CurrentStatus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CurrentStatus)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProgramIncrement)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProgramIncrement.ProgramIncrementID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ProgramIncrementGoalID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

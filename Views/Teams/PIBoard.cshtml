@@ -1,0 +1,68 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.Team
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Team</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TeamName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TeamName)
+        </dd>
+
+    </dl>
+</div>
+
+<style>
+    .flex-grid-pi {
+        display: flex;
+    }
+
+    .col-pi {
+        flex: 1;
+    }
+</style>
+    <div class="flex-grid-pi">
+        <div class="col-pi">Team Name</div>
+        <div class="col-pi">1</div>
+        <div class="col-pi">2</div>
+        <div class="col-pi">3</div>
+        <div class="col-pi">4</div>
+        <div class="col-pi">5</div>
+        <div class="col-pi">6</div>
+
+    </div>
+
+    <hr />
+
+    <style>
+        .flex-grid {
+            display: flex;
+        }
+
+        .col {
+            flex: 1;
+        }
+    </style>
+
+    <div class="flex-grid">
+        <div class="col">Team Name</div>
+        <div class="col">1</div>
+        <div class="col">2</div>
+        <div class="col">3</div>
+        <div class="col">4</div>
+        <div class="col">5</div>
+        <div class="col">6</div>
+
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.TeamID">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
