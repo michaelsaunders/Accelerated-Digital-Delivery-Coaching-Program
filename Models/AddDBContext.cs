@@ -43,6 +43,18 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Models
 
         public DbSet<Accelerated_Digital_Delivery_Coaching_Program.Models.ProgramIncrementGoal> ProgramIncrementGoal { get; set; }
 
+        public DbSet<Accelerated_Digital_Delivery_Coaching_Program.Models.InterestingSalesFacts> InterestingSalesFacts { get; set; }
+
+        public DbSet<Accelerated_Digital_Delivery_Coaching_Program.Models.PatternAssessment> PatternAssessment { get; set; }
+
+        public DbSet<Accelerated_Digital_Delivery_Coaching_Program.Models.PersonNote> PersonNote { get; set; }
+
+        public DbSet<Accelerated_Digital_Delivery_Coaching_Program.Models.PersonalAssessment> PersonalAssessment { get; set; }
+
+        public DbSet<Accelerated_Digital_Delivery_Coaching_Program.Models.PersonalAssessmentTemplate> PersonalAssessmentTemplate { get; set; }
+
+        public DbSet<Accelerated_Digital_Delivery_Coaching_Program.Models.Coach> Coach { get; set; }
+
 
     }
 }

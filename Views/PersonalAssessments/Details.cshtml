@@ -1,0 +1,60 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.PersonalAssessment
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>PersonalAssessment</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Person)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Person.PersonID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AssessmentName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AssessmentName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateOfAssessment)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateOfAssessment)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AreaCoaching)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AreaCoaching)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NotesForAssessment)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NotesForAssessment)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SummaryResult)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SummaryResult)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NextAsessmentDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NextAsessmentDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PersonalAssessmentID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

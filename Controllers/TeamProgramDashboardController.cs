@@ -39,7 +39,7 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
                 return NotFound();
             }
             
-            var iteration = await _context.Iterations.Where(m => m.TeamID == id).Include(p => p.IterationGoal).ToListAsync();
+            var iteration = await _context.Iterations.Where(m => m.TeamID == id).Include(p => p.IterationGoal).OrderBy(i => i.StartDate).ToListAsync();
 
             
             var programincrementgoals = await _context.ProgramIncrementGoal.Where(m => m.TeamID == id).ToListAsync();

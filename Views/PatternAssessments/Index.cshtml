@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Accelerated_Digital_Delivery_Coaching_Program.Models.PatternAssessment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatternID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Implemented)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WithIntent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RatingOfAssessment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssessmentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NextAssessmentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FollowUpCompleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecordActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatternID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Implemented)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WithIntent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RatingOfAssessment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssessmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NextAssessmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FollowUpCompleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecordActive)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PatternAssessmentID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PatternAssessmentID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PatternAssessmentID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

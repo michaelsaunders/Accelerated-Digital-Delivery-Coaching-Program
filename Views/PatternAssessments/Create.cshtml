@@ -1,0 +1,78 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.PatternAssessment
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>PatternAssessment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TeamID" class="control-label"></label>
+                <input asp-for="TeamID" class="form-control" />
+                <span asp-validation-for="TeamID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PatternID" class="control-label"></label>
+                <input asp-for="PatternID" class="form-control" />
+                <span asp-validation-for="PatternID" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Implemented" /> @Html.DisplayNameFor(model => model.Implemented)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="WithIntent" /> @Html.DisplayNameFor(model => model.WithIntent)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="RatingOfAssessment" class="control-label"></label>
+                <select asp-for="RatingOfAssessment" class="form-control"></select>
+                <span asp-validation-for="RatingOfAssessment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssessmentDate" class="control-label"></label>
+                <input asp-for="AssessmentDate" class="form-control" />
+                <span asp-validation-for="AssessmentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NextAssessmentDate" class="control-label"></label>
+                <input asp-for="NextAssessmentDate" class="form-control" />
+                <span asp-validation-for="NextAssessmentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="FollowUpCompleted" /> @Html.DisplayNameFor(model => model.FollowUpCompleted)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="RecordActive" /> @Html.DisplayNameFor(model => model.RecordActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

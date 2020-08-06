@@ -1,0 +1,17 @@
+  // POST: PersonNotes/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateNoteWithPersonInPersonalCoachingID([Bind("PersonNoteID,NoteDate,Notes")] PersonNote personNote)
+        {
+            if (ModelState.IsValid)
+            {
+                personNote.PersonNoteID = Guid.NewGuid();
+                _context.Add(personNote);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("PersonalCoachingDetails", "People", new { id = personalAssessment.PersonID });
+               
+            }
+            return View(personNote);
+        }

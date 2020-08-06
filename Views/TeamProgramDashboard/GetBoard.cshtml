@@ -2,119 +2,173 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Accelerated_Digital_Delivery_Coaching_Program</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Compressed CSS -->
+    <link href="~/lib/jqueryui/jquery-ui.css" rel="stylesheet" />
+    <script src="~/lib/jqueryui/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#sortable").sortable();
+            alert("hello");
+        });
 
-<h1>Details</h1>
-<hr />
-<h2>Team Information</h2>
-<div>
+    </script>
+    <style>
+        .horizontal-scrollable {
+         
+            overflow: auto;
+            white-space: nowrap;
+        }
+    </style>
+
+</head>
+<center>
+    <h2>Team: @Html.DisplayFor(model => model.Team.TeamName)</h2>
+    <h2>Program Increment Goals: </h2>
     <hr />
-    <dl class="row">
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Team.TeamName)
-        </dd>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Team.YesterdaysWeather)
-        </dd>
-    </dl>
-</div>
-<hr />
-<h2>Program Increment Goals</h2>
-<div class="container">
-    <div class="row">
-        @foreach (var item in Model.ProgramIncrementGoals)
-        {
+</center>
+        <div class="container-fluid">
+            <div class="row flex-row flex-nowrap overflow-auto">
+                @foreach (var item in Model.ProgramIncrementGoals)
+                {
 
-        <div class="col-sm">
-            <div class="goalbox">
-                <center>
-                    @Html.DisplayFor(modelItem => item.Goal)
-                    @switch (item.FistOfFive)
-                    {
-                        case 1:
-                            <div><img src="/images/1-No-Confidence.PNG" /></div>
-                            break;
-                        case 2:
-                            <div><img src="/images/2-Little-Confidence.PNG" /></div>
-                            break;
-                        case 3:
-                            <div><img src="/images/3-Good-Confidence.PNG" /></div>
-                            break;
-                        case 4:
-                            <div><img src="/images/4-High-Confidence.PNG" /></div>
-                            break;
-                        case 5:
-                            <div><img src="/images/5-Very-High-Confidence.PNG" /></div>
-                            break;
-                    }
 
-                    @switch (item.CurrentStatus)
-                    {
-                        case 1:
-                            <div><img src="/images/1-Status-No-Impediments.PNG" /></div>
-                            <div>No Impediments</div>
-                            break;
-                        case 2:
-                            <div><img src="/images/2-Status-Impediments-No-Measurable-Impact.PNG" /></div>
-                            <div>Impediments - No Measurable Impact</div>
-                            break;
-                        case 3:
-                            <div><img src="/images/3-Status-Some-Impediments-Situation-Improving.PNG" /></div>
-                            <div>Some Impediments, Situation Improving</div>
-                            break;
-                        case 4:
-                            <div><img src="/images/4-Status-Some-Impediments-Situation-Stable.PNG" /></div>
-                            <div>Some Impediments, Situation Stable</div>
-                            break;
-                        case 5:
-                            <div><img src="/images/5-Status-Some-Impediments-Situations-Worsening.PNG" /></div>
-                            <div>Some Impediments, Situations Worsening</div>
-                            break;
-                        case 6:
-                            <div><img src="/images/6-Status-Team-Totally-Blocked.PNG" /></div>
-                            <div>Team Totally Blocked</div>
-                            break;
-                    }
-                </center>
+                    <div class="col-2" style="border: 2px solid black;">
+                        <center>
+                            <div>
+                                @Html.DisplayFor(modelItem => item.Goal)
+                            </div>
+                            @switch (item.FistOfFive)
+                            {
+                                case 1:
+                                    <div><img src="/images/1-No-Confidence.PNG" /></div>
+                                    break;
+                                case 2:
+                                    <div><img src="/images/2-Little-Confidence.PNG" /></div>
+                                    break;
+                                case 3:
+                                    <div><img src="/images/3-Good-Confidence.PNG" /></div>
+                                    break;
+                                case 4:
+                                    <div><img src="/images/4-High-Confidence.PNG" /></div>
+                                    break;
+                                case 5:
+                                    <div><img src="/images/5-Very-High-Confidence.PNG" /></div>
+                                    break;
+                            }
+
+                            @switch (item.CurrentStatus)
+                            {
+                                case 1:
+                                    <div><img src="/images/1-Status-No-Impediments.PNG" /></div>
+                                    <div>No Impediments</div>
+                                    break;
+                                case 2:
+                                    <div><img src="/images/2-Status-Impediments-No-Measurable-Impact.PNG" /></div>
+                                    <div>Impediments - No Measurable Impact</div>
+                                    break;
+                                case 3:
+                                    <div><img src="/images/3-Status-Some-Impediments-Situation-Improving.PNG" /></div>
+                                    <div>Some Impediments, Situation Improving</div>
+                                    break;
+                                case 4:
+                                    <div><img src="/images/4-Status-Some-Impediments-Situation-Stable.PNG" /></div>
+                                    <div>Some Impediments, Situation Stable</div>
+                                    break;
+                                case 5:
+                                    <div><img src="/images/5-Status-Some-Impediments-Situations-Worsening.PNG" /></div>
+                                    <div>Some Impediments, Situations Worsening</div>
+                                    break;
+                                case 6:
+                                    <div><img src="/images/6-Status-Team-Totally-Blocked.PNG" /></div>
+                                    <div>Team Totally Blocked</div>
+                                    break;
+                            }
+                        </center>
+                    </div>
+
+
+                }
+
             </div>
         </div>
 
-        }
+        <hr />
+        <center><h2>Sprints / Iteration</h2></center>
+        <div class="container-fluid">
+            <div class="row flex-row flex-nowrap overflow-auto">
+                @foreach (var item in Model.Iterations)
+                {
+                    <div class="col-2" style="border: 2px solid black;">
+                        <center>
+                            <b>Iteration / Sprint Name:</b><br /> @Html.DisplayFor(modelItem => item.IterationName)<br />
+                            <b>Start Date:</b> @Html.DisplayFor(modelItem => item.StartDate)<br>
+                            <b>Finish Date:</b> @Html.DisplayFor(modelItem => item.StopDate)<br>
+                            @switch (item.IterationGoal.FistOfFive)
+                            {
+                                case 0:
+                                    <div><img src="/images/0-Not-Started.PNG" /></div>
+                                    break;
+                                case 1:
+                                    <div><img src="/images/1-No-Confidence.PNG" /></div>
+                                    break;
+                                case 2:
+                                    <div><img src="/images/2-Little-Confidence.PNG" /></div>
+                                    break;
+                                case 3:
+                                    <div><img src="/images/3-Good-Confidence.PNG" /></div>
+                                    break;
+                                case 4:
+                                    <div><img src="/images/4-High-Confidence.PNG" /></div>
+                                    break;
+                                case 5:
+                                    <div><img src="/images/5-Very-High-Confidence.PNG" /></div>
+                                    break;
+                            }
+                            @switch (item.IterationGoal.CurrentStatus)
+                            {
+                                case 1:
+                                    <div><img src="/images/1-Status-No-Impediments.PNG" /></div>
+                                    <div>No Impediments</div>
+                                    break;
+                                case 2:
+                                    <div><img src="/images/2-Status-Impediments-No-Measurable-Impact.PNG" /></div>
+                                    <div>Impediments - No Measurable Impact</div>
+                                    break;
+                                case 3:
+                                    <div><img src="/images/3-Status-Some-Impediments-Situation-Improving.PNG" /></div>
+                                    <div>Some Impediments, Situation Improving</div>
+                                    break;
+                                case 4:
+                                    <div><img src="/images/4-Status-Some-Impediments-Situation-Stable.PNG" /></div>
+                                    <div>Some Impediments, Situation Stable</div>
+                                    break;
+                                case 5:
+                                    <div><img src="/images/5-Status-Some-Impediments-Situations-Worsening.PNG" /></div>
+                                    <div>Some Impediments, Situations Worsening</div>
+                                    break;
+                                case 6:
+                                    <div><img src="/images/6-Status-Team-Totally-Blocked.PNG" /></div>
+                                    <div>Team Totally Blocked</div>
+                                    break;
+                            }
+                            <a asp-controller="Iterations" asp-action="Edit" asp-route-id="@item.IterationID">Edit Sprint</a>
+                            <a asp-controller="IterationGoals" asp-action="Edit" asp-route-id="@item.IterationGoalID">Edit Sprint Goal</a>
+                        </center>
+                    </div>
 
-    </div>
-</div>
+                }
+            </div>
 
-<hr />
-<h2>Sprints / Iteration</h2>
-<div class="container">
-    <div class="row">
-        @foreach (var item in Model.Iterations)
-        {
-        <dd class="col-sm-2">
-            <b>Iteration ID:</b> @Html.DisplayFor(modelItem => item.IterationID)<br>
-            <b>Iteration Name:</b> @Html.DisplayFor(modelItem => item.IterationName)<br>
-            <b>Start Date:</b> @Html.DisplayFor(modelItem => item.StartDate)<br>
-            <b>Finish Date:</b> @Html.DisplayFor(modelItem => item.StopDate)<br>
-            @switch (item.IterationGoal.FistOfFive)
-            {
-                case 1:
-                    <div><img src="/images/1-No-Confidence.PNG" /></div>
-                    break;
-                case 2:
-                    <div><img src="/images/2-Little-Confidence.PNG" /></div>
-                    break;
-                case 3:
-                    <div><img src="/images/3-Good-Confidence.PNG" /></div>
-                    break;
-                case 4:
-                    <div><img src="/images/4-High-Confidence.PNG" /></div>
-                    break;
-                case 5:
-                    <div><img src="/images/5-Very-High-Confidence.PNG" /></div>
-                    break;
-            }
-        </dd>
-        }
-    </div>
-</div>
-      
+        </div>
+

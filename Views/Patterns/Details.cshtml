@@ -1,0 +1,48 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.Pattern
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Pattern</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PatternName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PatternName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.InputToPattern)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.InputToPattern)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OutToPattern)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OutToPattern)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BriefDescription)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BriefDescription)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FullDescription)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FullDescription)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PatternID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -19,6 +19,37 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.Coach", b =>
+                {
+                    b.Property<Guid>("CoachID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CoachID");
+
+                    b.ToTable("Coach");
+                });
+
+            modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.InterestingSalesFacts", b =>
+                {
+                    b.Property<Guid>("InterestingSalesFactsID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Fact")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("InterestingSalesFactsID");
+
+                    b.ToTable("InterestingSalesFacts");
+                });
+
             modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.Iteration", b =>
                 {
                     b.Property<Guid>("IterationID")
@@ -164,6 +195,13 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("BriefDescription")
+                        .HasColumnType("nvarchar(160)")
+                        .HasMaxLength(160);
+
+                    b.Property<string>("FullDescription")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("InputToPattern")
                         .HasColumnType("nvarchar(max)");
 
@@ -171,11 +209,53 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PatternName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(80)")
+                        .HasMaxLength(80);
 
                     b.HasKey("PatternID");
 
                     b.ToTable("Patterns");
+                });
+
+            modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.PatternAssessment", b =>
+                {
+                    b.Property<Guid>("PatternAssessmentID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("AssessmentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("FollowUpCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Implemented")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("NextAssessmentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("PatternID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("RatingOfAssessment")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("RecordActive")
+                        .HasColumnType("bit");
+
+                    b.Property<long>("TeamID")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("WithIntent")
+                        .HasColumnType("bit");
+
+                    b.HasKey("PatternAssessmentID");
+
+                    b.ToTable("PatternAssessment");
                 });
 
             modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.Person", b =>
@@ -185,12 +265,119 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<Guid?>("CoachID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("NextAppointment")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("NextAssessmentDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("PersonsName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PersonID");
 
+                    b.HasIndex("CoachID");
+
                     b.ToTable("Persons");
+                });
+
+            modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.PersonNote", b =>
+                {
+                    b.Property<Guid>("PersonNoteID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("NoteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("PersonID")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("PersonNoteID");
+
+                    b.HasIndex("PersonID");
+
+                    b.ToTable("PersonNote");
+                });
+
+            modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.PersonalAssessment", b =>
+                {
+                    b.Property<Guid>("PersonalAssessmentID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AreaCoaching")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AssessmentName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateOfAssessment")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("NextAsessmentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NotesForAssessment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("PersonID")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid>("PersonalAssessmentTemplateID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("SummaryResult")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PersonalAssessmentID");
+
+                    b.HasIndex("PersonID");
+
+                    b.HasIndex("PersonalAssessmentTemplateID");
+
+                    b.ToTable("PersonalAssessment");
+                });
+
+            modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.PersonalAssessmentTemplate", b =>
+                {
+                    b.Property<Guid>("PersonalAssessmentTemplateID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AreaOfCoaching")
+                        .HasColumnType("int");
+
+                    b.Property<string>("BriefDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DetailedDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LinkToImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LinkToPDF")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PersonalAssessmentTemplateName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PersonalAssessmentTemplateID");
+
+                    b.ToTable("PersonalAssessmentTemplate");
                 });
 
             modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.ProductBacklog", b =>
@@ -359,6 +546,9 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                     b.Property<DateTime>("LastYesterdaysWeatherUpdate")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid?>("PatternID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<long?>("TeamCoachPersonID")
                         .HasColumnType("bigint");
 
@@ -372,6 +562,8 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("TeamID");
+
+                    b.HasIndex("PatternID");
 
                     b.HasIndex("TeamCoachPersonID");
 
@@ -444,6 +636,35 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.Person", b =>
+                {
+                    b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.Coach", null)
+                        .WithMany("Person")
+                        .HasForeignKey("CoachID");
+                });
+
+            modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.PersonNote", b =>
+                {
+                    b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.Person", "Person")
+                        .WithMany("PersonNotes")
+                        .HasForeignKey("PersonID");
+                });
+
+            modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.PersonalAssessment", b =>
+                {
+                    b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.Person", "Person")
+                        .WithMany("PersonalAssessments")
+                        .HasForeignKey("PersonID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.PersonalAssessmentTemplate", "PersonalAssessmentTemplate")
+                        .WithMany()
+                        .HasForeignKey("PersonalAssessmentTemplateID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.ProductBacklogItem", b =>
                 {
                     b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.ProductBacklog", "ProductBacklog")
@@ -471,6 +692,10 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
 
             modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.Team", b =>
                 {
+                    b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.Pattern", "Pattern")
+                        .WithMany()
+                        .HasForeignKey("PatternID");
+
                     b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.Person", "TeamCoach")
                         .WithMany()
                         .HasForeignKey("TeamCoachPersonID");

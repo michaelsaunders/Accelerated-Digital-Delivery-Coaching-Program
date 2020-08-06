@@ -18,6 +18,13 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
             _context = context;
         }
 
+        // GET: PersonalCoachingIndex
+        public async Task<IActionResult> PersonalCoachingIndex()
+        {
+            return View(await _context.Persons.ToListAsync());
+        }
+
+
         // GET: People
         public async Task<IActionResult> Index()
         {
@@ -32,7 +39,33 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
                 return NotFound();
             }
 
-            var person = await _context.Persons
+            var person = await _context.Persons.Include(p => p.PersonalAssessments)
+                .Include (j => j.PersonNotes)
+                .FirstOrDefaultAsync(m => m.PersonID == id);
+            if (person == null)
+            {
+                return NotFound();
+            }
+            //if (person.PersonalAssessments == null)
+            //{
+            //    Guid g = Guid.NewGuid();
+            //   PersonalAssessment personalassessment = new PersonalAssessment();
+            //    person.PersonalAssessments.Add(personalassessment);
+            //}
+            
+            return View(person);
+        }
+
+        // GET: People/PersonalCoachingDetails/5
+        public async Task<IActionResult> PersonalCoachingDetails(long? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var person = await _context.Persons.Include(p => p.PersonalAssessments)
+                 .Include(j => j.PersonNotes)
                 .FirstOrDefaultAsync(m => m.PersonID == id);
             if (person == null)
             {
@@ -53,7 +86,7 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PersonID,PersonsName")] Person person)
+        public async Task<IActionResult> Create([Bind("PersonID,PersonsName,DateOfBirth,CreatedDate")] Person person)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +98,7 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
         }
 
         // GET: People/Edit/5
-        public async Task<IActionResult> Edit(long? id)
+        public async Task<IActionResult> PersonalCoachingEdit(long? id)
         {
             if (id == null)
             {
@@ -80,12 +113,50 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
             return View(person);
         }
 
+
+
+        // POST: People/PersonalCoachingEdit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> PersonalCoachingEdit(long id, [Bind("PersonID,PersonsName,DateOfBirth,CreatedDate")] Person person)
+        {
+            if (id != person.PersonID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(person);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!PersonExists(person.PersonID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction("PersonalCoachingDetails", "People", new { id = person.PersonID });
+            }
+            return View(person);
+        }
+        
+
         // POST: People/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("PersonID,PersonsName")] Person person)
+        public async Task<IActionResult> Edit(long id, [Bind("PersonID,PersonsName,DateOfBirth,CreatedDate")] Person person)
         {
             if (id != person.PersonID)
             {

@@ -1,0 +1,60 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.PersonalAssessmentTemplate
+
+@{
+    Layout = "_LayoutPersonalCoaching";
+    ViewData["Title"] = "Create";
+
+}
+
+<h1>Create</h1>
+
+<h4>PersonalAssessmentTemplate</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PersonalAssessmentTemplateName" class="control-label"></label>
+                <input asp-for="PersonalAssessmentTemplateName" class="form-control" />
+                <span asp-validation-for="PersonalAssessmentTemplateName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AreaOfCoaching" class="control-label"></label>
+                <select asp-for="AreaOfCoaching" class="form-control" asp-items="@Html.GetEnumSelectList<PersonalAssessmentTemplate.AreasOfCoaching>()"></select>
+                <span asp-validation-for="AreaOfCoaching" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LinkToPDF" class="control-label"></label>
+                <input asp-for="LinkToPDF" class="form-control" />
+                <span asp-validation-for="LinkToPDF" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BriefDescription" class="control-label"></label>
+                <input asp-for="BriefDescription" class="form-control" />
+                <span asp-validation-for="BriefDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DetailedDescription" class="control-label"></label>
+                <input asp-for="DetailedDescription" class="form-control" />
+                <span asp-validation-for="DetailedDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LinkToImage" class="control-label"></label>
+                <input asp-for="LinkToImage" class="form-control" />
+                <span asp-validation-for="LinkToImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

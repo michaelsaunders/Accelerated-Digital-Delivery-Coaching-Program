@@ -3,68 +3,88 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Accelerated_Digital_Delivery_Coaching_Program</title>
+    <title>@ViewData["Title"] - Accelerated Digital Delivery Coaching Program</title>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link href="~/lib/jqueryui/jquery-ui.css" rel="stylesheet" />
+    <script src="~/lib/jqueryui/jquery-ui.js"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Compressed CSS -->
-    <link href="~/lib/jqueryui/jquery-ui.css" rel="stylesheet" />
-    <script src="~/lib/jqueryui/jquery-ui.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            $("#sortable").sortable();
-            alert("hello");
-        });
 
-    </script>
+
+
 
 
 </head>
-<body onload="makesortable();">
+<body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Accelerated Digital Delivery Coaching Program</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ADD Coaching Program</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TeamOfTeams" asp-action="Index">Team of Teams</a>
+                        <li class="nav-item text-dark dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="coachingDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Coaching Menu
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="coachingDropdown">
+                                <a class="dropdown-item" asp-area="" asp-controller="People" asp-action="PersonalCoachingIndex">Individual Coaching</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Coaches" asp-action="Index">Coaches</a>
+                              
+                            </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Teams" asp-action="Index">Teams</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="People" asp-action="PersonalCoachingIndex">Individual Coaching</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="People" asp-action="Index">People</a>
+
+                        <li class="nav-item text-dark dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Organisational Design
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-area="" asp-controller="People" asp-action="Index">Individuals</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Teams" asp-action="Index">Teams</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="TeamOfTeams" asp-action="Index">Team of Teams</a>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ProgramIncrements" asp-action="Index">Program Increment</a>
+                        <li class="nav-item text-dark dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="iterationDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Iteration Menu
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="iterationDropdown">
+                                <a class="dropdown-item" asp-area="" asp-controller="Iterations" asp-action="Index">Iterations</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="IterationGoals" asp-action="Index">Iteration Goals</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="ProgramIncrements" asp-action="Index"> Program Iterations</a>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Iterations" asp-action="Index">Iterations</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="IterationGoals" asp-action="Index">Iteration Goals</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="TaskLists" asp-action="Index">Task Lists</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="ProductBacklogs" asp-action="Index">Product Backlog</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="ProductBacklogItems" asp-action="Index">Product Backlog Items</a>
                         </li>
-                        <li> <button class="navbar-item">hi</button></li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Patterns" asp-action="Index">
+                                Patterns
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/TeamProgramDashboard/GetBoard/1">Show Board</a>
+                        </li>
                     </ul>
                 </div>
             </div>

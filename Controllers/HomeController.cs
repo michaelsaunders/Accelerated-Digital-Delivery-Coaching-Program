@@ -23,6 +23,12 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
             return View();
         }
 
+
+        public IActionResult PersonalCoachingIndex()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

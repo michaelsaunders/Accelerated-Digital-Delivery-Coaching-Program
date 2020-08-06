@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Accelerated_Digital_Delivery_Coaching_Program.Models.PersonalAssessmentTemplate>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutPersonalCoaching";
+}
+
+<h1>Personal Assessment Template</h1>
+
+<div class="row flex-row flex-nowrap overflow-auto">
+    @foreach (var item in Model)
+    {
+
+
+        <div class="col-2" style="border: 2px solid black;">
+            <center>
+                <div>
+                    <b>@Html.DisplayFor(modelItem => item.PersonalAssessmentTemplateName)</b>
+                </div>
+                <hr />
+                <div>
+                    @Html.DisplayFor(modelItem => item.BriefDescription)
+                </div>
+
+            </center>
+        </div>
+    }
+</div>
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonalAssessmentTemplateName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AreaOfCoaching)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LinkToPDF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BriefDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DetailedDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LinkToImage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonalAssessmentTemplateName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AreaOfCoaching)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LinkToPDF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BriefDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DetailedDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LinkToImage)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PersonalAssessmentTemplateID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PersonalAssessmentTemplateID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PersonalAssessmentTemplateID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

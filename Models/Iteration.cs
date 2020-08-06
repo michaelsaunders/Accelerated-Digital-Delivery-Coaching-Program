@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,9 +14,11 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Models
         [DisplayName("Iteration / Sprint Name")]
         public string IterationName { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         [DisplayName("Start Date")]
         public DateTime StartDate { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         [DisplayName("Stop Date")]
         public DateTime StopDate { get; set; }
 

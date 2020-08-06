@@ -1,0 +1,46 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.Person
+
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "_LayoutPersonalCoaching";
+}
+
+<h1>Edit</h1>
+
+<h4>Person</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="People" asp-action="PersonalCoachingEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PersonID" />
+            <div class="form-group">
+                <label asp-for="PersonsName" class="control-label"></label>
+                <input asp-for="PersonsName" class="form-control" />
+                <span asp-validation-for="PersonsName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedDate" class="control-label"></label>
+                <input asp-for="CreatedDate" class="form-control" />
+                <span asp-validation-for="CreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="PersonalCoachingIndex">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

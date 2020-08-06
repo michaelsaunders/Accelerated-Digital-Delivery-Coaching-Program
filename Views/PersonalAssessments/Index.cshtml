@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Accelerated_Digital_Delivery_Coaching_Program.Models.PersonalAssessment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Person)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssessmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfAssessment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AreaCoaching)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NotesForAssessment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SummaryResult)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NextAsessmentDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person.PersonID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssessmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfAssessment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AreaCoaching)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotesForAssessment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SummaryResult)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NextAsessmentDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PersonalAssessmentID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PersonalAssessmentID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PersonalAssessmentID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

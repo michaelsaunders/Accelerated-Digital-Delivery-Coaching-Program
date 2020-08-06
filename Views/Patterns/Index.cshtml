@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Accelerated_Digital_Delivery_Coaching_Program.Models.Pattern>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PatternName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InputToPattern)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OutToPattern)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BriefDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullDescription)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatternName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InputToPattern)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OutToPattern)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BriefDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullDescription)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PatternID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PatternID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PatternID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

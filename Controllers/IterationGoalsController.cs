@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Accelerated_Digital_Delivery_Coaching_Program.Models;
 
-namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
+namespace Accelerated_Digital_Delivery_Coaching_Program
 {
     public class IterationGoalsController : Controller
     {
@@ -53,7 +53,7 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IterationGoalID,Goal,Specific,Measurable,Achievable,Realistic,Timebound,TiedToOKR")] IterationGoal iterationGoal)
+        public async Task<IActionResult> Create([Bind("IterationGoalID,Goal,Specific,Measurable,Achievable,Realistic,Timebound,TiedToOKR,FistOfFive,CurrentStatus")] IterationGoal iterationGoal)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("IterationGoalID,Goal,Specific,Measurable,Achievable,Realistic,Timebound,TiedToOKR")] IterationGoal iterationGoal)
+        public async Task<IActionResult> Edit(Guid id, [Bind("IterationGoalID,Goal,Specific,Measurable,Achievable,Realistic,Timebound,TiedToOKR,FistOfFive,CurrentStatus")] IterationGoal iterationGoal)
         {
             if (id != iterationGoal.IterationGoalID)
             {

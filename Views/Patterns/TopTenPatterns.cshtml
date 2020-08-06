@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Accelerated_Digital_Delivery_Coaching_Program.Models.Pattern>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Patterns </h1>
+
+<div class="container-fluid">
+    <div class="row flex-row flex-nowrap overflow-auto">
+        @foreach (var item in Model)
+        {
+
+
+            <div class="col-md-3" style="border: 2px solid black;">
+                <center>
+                    <div>
+                        <b>Pattern Name:</b><br />@Html.DisplayFor(modelItem => item.PatternName)
+                    </div>
+                    <div>
+                        <b>Brief Description:</b> @Html.DisplayFor(modelItem => item.BriefDescription)
+                    </div>
+                    <div>
+                        <b>Inputs:</b> @Html.DisplayFor(modelItem => item.InputToPattern)
+                    </div>
+                    <div>
+                        <b>Outputs:</b> @Html.DisplayFor(modelItem => item.OutToPattern)
+                    </div>
+                    
+                </center>
+            </div>
+        }
+    </div>
+</div>
+ 

@@ -1,0 +1,137 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.Person
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_LayoutPersonalCoaching";
+}
+
+<h2>Asessments</h2>
+
+
+
+<div class="row flex-row flex-nowrap overflow-auto">
+    <!-- Displaying Discovery/Assessment Elements about the individual-->
+    @if (Model.PersonalAssessments is null)
+    {
+        <div class="col-2" style="border: 2px solid black;">
+            <center>
+                <div>
+                    No Personal Assessments Yet. <br />
+                    Please assign one.
+                </div>
+            </center>
+        </div>
+
+    }
+    else
+    {
+        @foreach (var item in Model.PersonalAssessments)
+        {
+            <div class="col-2" style="border: 2px solid black;">
+                <center>
+                    <div>
+
+                        @item.AssessmentName<br />
+                        @item.AreaCoaching<br />
+                        @item.DateOfAssessment.ToString("dd MMM yyyy")<br />
+                        @Html.DisplayNameFor(modelItem => item.PersonalAssessmentTemplate.PersonalAssessmentTemplateName)<br />
+                        @item.SummaryResult<br />
+                        <a asp-controller="PersonalAssessments" asp-action="EditWithPersonID" asp-route-id="@item.PersonalAssessmentID">Edit Assessment</a>
+                    </div>
+                </center>
+            </div>
+        }
+    }
+</div>
+<hr/>
+<center>
+    <a asp-controller="PersonalAssessments" asp-action="CreateWithPersonID" asp-route-id="@Model.PersonID">Create Assessment</a>
+</center>
+<hr />
+
+<div>
+    <h1>Person / Individual</h1>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PersonsName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PersonsName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NextAppointment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NextAppointment)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+    </dl>
+</div>
+<div>
+
+
+    <a asp-action="PersonalCoachingEdit" asp-route-id="@Model.PersonID">Edit</a>
+    
+</div>
+<hr />
+<h4>Notes</h4>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="CreateNoteWithPersonIDInPersonalCoaching" asp-controller="PersonNotes">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+
+                <label class="control-label">Note Date</label>
+                <input class="form-control" type="datetime-local" data-val="true"
+                       data-val-required="The Note Date field is required." id="NoteDate" name="NoteDate" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Notes</label>
+                <textarea id="Notes" name="Notes" class="form-control" rows="10" cols="40"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="PersonID" id="PersonID" value="@Model.PersonID" />
+                <input type="submit" value="Create Note" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row flex-row" style="border: 2px solid black;">
+    <div class="col-2" style="border: 2px dotted black;">
+        <div>Date of Note</div>
+    </div>
+    <div class="col-10" style="border: 2px dotted black;">
+        <div>Notes</div>
+    </div>
+
+    @if (Model.PersonNotes is null)
+    {
+
+    }
+    else
+    {
+        @foreach (var item in Model.PersonNotes)
+        {
+            <div class="col-2" style="border: 2px dotted black;">
+                <div>@Html.DisplayFor(modelItem => item.NoteDate)</div>
+            </div>
+            <div class="col-10" style="border: 2px dotted black;">
+                <div>@Html.DisplayFor(modelItem => item.Notes)</div>
+            </div>
+        }
+
+    }
+</div>

@@ -1,0 +1,24 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.InterestingSalesFacts
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>InterestingSalesFacts</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fact)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fact)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.InterestingSalesFactsID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

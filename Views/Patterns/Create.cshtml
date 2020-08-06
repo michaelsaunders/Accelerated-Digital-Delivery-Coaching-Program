@@ -1,0 +1,53 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.Pattern
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Pattern</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PatternName" class="control-label"></label>
+                <input asp-for="PatternName" class="form-control" />
+                <span asp-validation-for="PatternName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputToPattern" class="control-label"></label>
+                <input asp-for="InputToPattern" class="form-control" />
+                <span asp-validation-for="InputToPattern" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OutToPattern" class="control-label"></label>
+                <input asp-for="OutToPattern" class="form-control" />
+                <span asp-validation-for="OutToPattern" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BriefDescription" class="control-label"></label>
+                <input asp-for="BriefDescription" class="form-control" />
+                <span asp-validation-for="BriefDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FullDescription" class="control-label"></label>
+                <textarea asp-for="FullDescription" class="form-control"></textarea>
+                <span asp-validation-for="FullDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
