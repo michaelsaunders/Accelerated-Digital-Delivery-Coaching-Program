@@ -27,7 +27,7 @@ namespace Accelerated_Digital_Delivery_Coaching_Program
         {
             services.AddDbContext<AddDBContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("sqlConnection")));
             services.AddControllersWithViews();
-                //.AddNewtonsoftJson(options =>
+                //.AddNewtonsoftJson();//options =>
             //options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 

@@ -23,11 +23,13 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="popper.js" Version="1.16.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="controller-api\" />
+    <Folder Include="wwwroot\lib\bought-theme\" />
   </ItemGroup>
 
 </Project>

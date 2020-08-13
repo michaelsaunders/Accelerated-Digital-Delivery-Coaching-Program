@@ -12,5 +12,7 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Models
 
         [DisplayName("Team Of Teams Name")]
         public string TeamOfTeamsName { get; set; }
+        public ICollection<TeamOfTeamIteration> TeamOfTeamIterations { get; set; }
+
     }
 }

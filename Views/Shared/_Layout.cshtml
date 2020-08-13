@@ -3,18 +3,64 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Accelerated Digital Delivery Coaching Program</title>
+    <title>@ViewData["Title"] - ADD</title>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <link href="~/lib/jqueryui/jquery-ui.css" rel="stylesheet" />
     <script src="~/lib/jqueryui/jquery-ui.js"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="~/css/site.css" />
+
     <!-- Compressed CSS -->
 
 
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
 
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                url: '@Url.Action("VisualiseTeamOfTeamsVelocity", "TeamOfTeams")',
+                success: function (result) {
+                    google.charts.load('current', {
+                        'packages': ['corechart']
+                    });
+                    google.charts.setOnLoadCallback(function () {
+                        drawChart(result);
+                    });
+                }
+            });
+        });
+        function drawChart(result) {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'teamOfTeamIterationName');
+            data.addColumn('number', 'incrementDeliveredVelocity');
+            data.addColumn({ role: 'style' });
+            data.addColumn({ role: 'annotation' });
+            var dataArray = [];
+            $.each(result, function (i, obj) {
+                dataArray.push([obj.teamOfTeamIterationName, obj.incrementDeliveredVelocity, 'blue', obj.incrementDeliveredVelocity.toString()]);
+            });
+            data.addRows(dataArray);
+
+            var columnChartOptions = {
+                title: "Delivered Velocity",
+                width: 1000,
+                height: 400,
+                bar: {groupWidth: "75%"}
+            }
+
+            
+            var columnChart = new google.visualization.ColumnChart(document.getElementById('columnchart_div'));
+            columnChart.draw(data, columnChartOptions);
+        }
+    </script>
 
 
 </head>
@@ -38,6 +84,8 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="coachingDropdown">
                                 <a class="dropdown-item" asp-area="" asp-controller="People" asp-action="PersonalCoachingIndex">Individual Coaching</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Teams" asp-action="Index">Teams Coaching</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="TeamOfTeams" asp-action="Index">Team of Teams Coaching</a>
                                 <a class="dropdown-item" asp-area="" asp-controller="Coaches" asp-action="Index">Coaches</a>
                               
                             </div>

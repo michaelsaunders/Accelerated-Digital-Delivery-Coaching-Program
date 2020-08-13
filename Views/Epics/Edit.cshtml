@@ -1,0 +1,59 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.Epic
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Epic</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="EpicID" />
+            <div class="form-group">
+                <label asp-for="EpicName" class="control-label"></label>
+                <input asp-for="EpicName" class="form-control" />
+                <span asp-validation-for="EpicName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerIdentifierID" class="control-label"></label>
+                <input asp-for="CustomerIdentifierID" class="form-control" />
+                <span asp-validation-for="CustomerIdentifierID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstimatedStoryPoints" class="control-label"></label>
+                <input asp-for="EstimatedStoryPoints" class="form-control" />
+                <span asp-validation-for="EstimatedStoryPoints" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActualStoryPoints" class="control-label"></label>
+                <input asp-for="ActualStoryPoints" class="form-control" />
+                <span asp-validation-for="ActualStoryPoints" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeamofTeamID" class="control-label"></label>
+                <input asp-for="TeamofTeamID" class="form-control" />
+                <span asp-validation-for="TeamofTeamID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeamID" class="control-label"></label>
+                <input asp-for="TeamID" class="form-control" />
+                <span asp-validation-for="TeamID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

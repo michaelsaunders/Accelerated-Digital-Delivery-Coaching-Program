@@ -36,6 +36,38 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                     b.ToTable("Coach");
                 });
 
+            modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.Epic", b =>
+                {
+                    b.Property<Guid>("EpicID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int?>("ActualStoryPoints")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CustomerIdentifierID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EpicName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EstimatedStoryPoints")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("ProgramIncrementID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<long?>("TeamID")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid?>("TeamofTeamID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("EpicID");
+
+                    b.ToTable("Epic");
+                });
+
             modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.InterestingSalesFacts", b =>
                 {
                     b.Property<Guid>("InterestingSalesFactsID")
@@ -302,7 +334,7 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("PersonID")
+                    b.Property<long>("PersonID")
                         .HasColumnType("bigint");
 
                     b.HasKey("PersonNoteID");
@@ -440,9 +472,14 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                     b.Property<Guid?>("TeamOfTeamsTeamOfTeamID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<long?>("TeamsTeamID")
+                        .HasColumnType("bigint");
+
                     b.HasKey("ProgramIncrementID");
 
                     b.HasIndex("TeamOfTeamsTeamOfTeamID");
+
+                    b.HasIndex("TeamsTeamID");
 
                     b.ToTable("ProgramIncrements");
                 });
@@ -558,6 +595,9 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                     b.Property<string>("TeamName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("TeamOfTeamIterationID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("YesterdaysWeather")
                         .HasColumnType("int");
 
@@ -568,6 +608,8 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                     b.HasIndex("TeamCoachPersonID");
 
                     b.HasIndex("TeamLeadPersonID");
+
+                    b.HasIndex("TeamOfTeamIterationID");
 
                     b.ToTable("Teams");
                 });
@@ -584,6 +626,48 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                     b.HasKey("TeamOfTeamID");
 
                     b.ToTable("TeamOfTeams");
+                });
+
+            modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.TeamOfTeamIteration", b =>
+                {
+                    b.Property<Guid>("TeamOfTeamIterationID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<long?>("IncrementCommittedVelocity")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("IncrementDeliveredVelocity")
+                        .HasColumnType("bigint");
+
+                    b.Property<int?>("IterationConfidence")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("ProgramIncrementID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StopDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("TeamOfTeamID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("TeamOfTeamIterationName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("YesterdaysWeather")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("TeamOfTeamIterationID");
+
+                    b.HasIndex("ProgramIncrementID");
+
+                    b.HasIndex("TeamOfTeamID");
+
+                    b.ToTable("TeamOfTeamIteration");
                 });
 
             modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.TeamSequence", b =>
@@ -647,7 +731,9 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                 {
                     b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.Person", "Person")
                         .WithMany("PersonNotes")
-                        .HasForeignKey("PersonID");
+                        .HasForeignKey("PersonID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.PersonalAssessment", b =>
@@ -679,6 +765,10 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                     b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.TeamOfTeam", "TeamOfTeams")
                         .WithMany()
                         .HasForeignKey("TeamOfTeamsTeamOfTeamID");
+
+                    b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.Team", "Teams")
+                        .WithMany()
+                        .HasForeignKey("TeamsTeamID");
                 });
 
             modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.ProgramIncrementGoal", b =>
@@ -703,6 +793,25 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                     b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.Person", "TeamLead")
                         .WithMany()
                         .HasForeignKey("TeamLeadPersonID");
+
+                    b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.TeamOfTeamIteration", null)
+                        .WithMany("Teams")
+                        .HasForeignKey("TeamOfTeamIterationID");
+                });
+
+            modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.TeamOfTeamIteration", b =>
+                {
+                    b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.ProgramIncrement", "ProgramIncrement")
+                        .WithMany()
+                        .HasForeignKey("ProgramIncrementID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.TeamOfTeam", null)
+                        .WithMany("TeamOfTeamIterations")
+                        .HasForeignKey("TeamOfTeamID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

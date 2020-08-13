@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Accelerated_Digital_Delivery_Coaching_Program.Models.TeamOfTeamIteration>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProgramIncrement.ProgramIncrementID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamOfTeamIterationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StopDate)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.YesterdaysWeather)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IncrementCommittedVelocity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IncrementDeliveredVelocity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IterationConfidence)
+            </th>
+
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProgramIncrement.IncrementID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamOfTeamIterationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StopDate)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.YesterdaysWeather)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncrementCommittedVelocity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncrementDeliveredVelocity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IterationConfidence)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TeamOfTeamIterationID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TeamOfTeamIterationID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TeamOfTeamIterationID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

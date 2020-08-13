@@ -24,6 +24,13 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
             return View(await _context.Teams.ToListAsync());
         }
 
+        // GET: Teams
+        public async Task<IActionResult> Dashboard(long? id)
+        {
+            ViewData["ProgramIncrementID"] = new SelectList(_context.ProgramIncrements, "ProgramIncrementID", "IncrementID");
+            return View(await _context.Teams.ToListAsync());
+        }
+
         // GET: Teams/Details/5
         public async Task<IActionResult> Details(long? id)
         {

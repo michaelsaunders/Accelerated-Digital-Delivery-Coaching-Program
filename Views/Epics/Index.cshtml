@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Accelerated_Digital_Delivery_Coaching_Program.Models.Epic>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EpicName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerIdentifierID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstimatedStoryPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualStoryPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamofTeamID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EpicName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerIdentifierID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstimatedStoryPoints)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualStoryPoints)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamofTeamID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EpicID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EpicID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EpicID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

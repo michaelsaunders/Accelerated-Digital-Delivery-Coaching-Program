@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Accelerated_Digital_Delivery_Coaching_Program.Models;
+using Accelerated_Digital_Delivery_Coaching_Program.ViewModels;
 
 namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
 {
@@ -20,6 +21,12 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
 
         // GET: TeamOfTeams
         public async Task<IActionResult> Index()
+        {
+            return View(await _context.TeamOfTeams.ToListAsync());
+        }
+
+        // GET: TeamOfTeams
+        public async Task<IActionResult> Dashboard()
         {
             return View(await _context.TeamOfTeams.ToListAsync());
         }
@@ -168,6 +175,29 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
         private bool TeamOfTeamExists(Guid id)
         {
             return _context.TeamOfTeams.Any(e => e.TeamOfTeamID == id);
+        }
+
+        public JsonResult VisualiseTeamOfTeamsVelocity()
+        {
+            return Json(Result());
+        }
+
+        public List<TeamOfTeamVelocity> Result()
+        {
+            List<TeamOfTeamVelocity> totVelocity = new List<TeamOfTeamVelocity>();
+            var teamOfTeamIteration = _context.TeamOfTeamIteration.OrderBy(b => b.TeamOfTeamIterationName).ToArray();
+            foreach (var item in teamOfTeamIteration)
+            {
+                totVelocity.Add(new TeamOfTeamVelocity()
+                {
+                    TeamOfTeamIterationName = item.TeamOfTeamIterationName,
+                    IncrementDeliveredVelocity = item.IncrementDeliveredVelocity.GetValueOrDefault(0)
+                    
+                }) ;
+                
+            }
+            return totVelocity;
+            
         }
     }
 }

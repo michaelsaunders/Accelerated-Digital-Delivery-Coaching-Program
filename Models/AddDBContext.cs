@@ -55,6 +55,10 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Models
 
         public DbSet<Accelerated_Digital_Delivery_Coaching_Program.Models.Coach> Coach { get; set; }
 
+        public DbSet<Accelerated_Digital_Delivery_Coaching_Program.Models.TeamOfTeamIteration> TeamOfTeamIteration { get; set; }
+
+        public DbSet<Accelerated_Digital_Delivery_Coaching_Program.Models.Epic> Epic { get; set; }
+
 
     }
 }
