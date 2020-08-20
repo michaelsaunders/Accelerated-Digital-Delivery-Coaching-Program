@@ -4,14 +4,16 @@ using Accelerated_Digital_Delivery_Coaching_Program.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
 {
     [DbContext(typeof(AddDBContext))]
-    partial class AddDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200814002215_ScrumMaster1")]
+    partial class ScrumMaster1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -560,7 +562,7 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                     b.Property<DateTime>("NextAppointment")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("PersonID")
+                    b.Property<long?>("PersonID")
                         .HasColumnType("bigint");
 
                     b.Property<bool>("PersonalImprovement")
@@ -832,9 +834,7 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                 {
                     b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.Person", "Person")
                         .WithMany()
-                        .HasForeignKey("PersonID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PersonID");
 
                     b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.Team", "Team")
                         .WithMany()

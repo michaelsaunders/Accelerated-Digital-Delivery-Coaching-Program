@@ -59,6 +59,8 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Models
 
         public DbSet<Accelerated_Digital_Delivery_Coaching_Program.Models.Epic> Epic { get; set; }
 
+        public DbSet<Accelerated_Digital_Delivery_Coaching_Program.Models.ScrumMaster> ScrumMaster { get; set; }
+
 
     }
 }

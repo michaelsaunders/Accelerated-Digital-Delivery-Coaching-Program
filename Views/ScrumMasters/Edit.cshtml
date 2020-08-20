@@ -1,0 +1,79 @@
+﻿@model Accelerated_Digital_Delivery_Coaching_Program.Models.ScrumMaster
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ScrumMaster</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ScrumMasterID" />
+            <div class="form-group">
+                <label asp-for="PersonID" class="control-label"></label>
+                <select asp-for="PersonID" class="form-control" asp-items="ViewBag.PersonID"></select>
+                <span asp-validation-for="PersonID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Coaching" class="control-label"></label>
+                <input asp-for="Coaching" class="form-control" />
+                <span asp-validation-for="Coaching" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Velocity" /> @Html.DisplayNameFor(model => model.Velocity)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="TeamHappiness" /> @Html.DisplayNameFor(model => model.TeamHappiness)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Quality" /> @Html.DisplayNameFor(model => model.Quality)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ProcessEfficiency" /> @Html.DisplayNameFor(model => model.ProcessEfficiency)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="BusinessValuePerStoryPoint" /> @Html.DisplayNameFor(model => model.BusinessValuePerStoryPoint)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="NextAppointment" class="control-label"></label>
+                <input asp-for="NextAppointment" class="form-control" />
+                <span asp-validation-for="NextAppointment" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="PersonalImprovement" /> @Html.DisplayNameFor(model => model.PersonalImprovement)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

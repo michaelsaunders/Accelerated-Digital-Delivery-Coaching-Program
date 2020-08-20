@@ -4,14 +4,16 @@ using Accelerated_Digital_Delivery_Coaching_Program.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
 {
     [DbContext(typeof(AddDBContext))]
-    partial class AddDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200813233251_ScrumMaster")]
+    partial class ScrumMaster
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -542,54 +544,6 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                     b.ToTable("ProgramIncrementGoal");
                 });
 
-            modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.ScrumMaster", b =>
-                {
-                    b.Property<Guid>("ScrumMasterID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("BusinessValuePerStoryPoint")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Coaching")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("NextAppointment")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long>("PersonID")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool>("PersonalImprovement")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("ProcessEfficiency")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Quality")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("TeamHappiness")
-                        .HasColumnType("bit");
-
-                    b.Property<long?>("TeamID")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool>("Velocity")
-                        .HasColumnType("bit");
-
-                    b.HasKey("ScrumMasterID");
-
-                    b.HasIndex("PersonID");
-
-                    b.HasIndex("TeamID");
-
-                    b.ToTable("ScrumMaster");
-                });
-
             modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.Sequence", b =>
                 {
                     b.Property<Guid>("SequenceID")
@@ -826,19 +780,6 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Migrations
                         .HasForeignKey("ProgramIncrementID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.ScrumMaster", b =>
-                {
-                    b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.Person", "Person")
-                        .WithMany()
-                        .HasForeignKey("PersonID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Accelerated_Digital_Delivery_Coaching_Program.Models.Team", "Team")
-                        .WithMany()
-                        .HasForeignKey("TeamID");
                 });
 
             modelBuilder.Entity("Accelerated_Digital_Delivery_Coaching_Program.Models.Team", b =>
