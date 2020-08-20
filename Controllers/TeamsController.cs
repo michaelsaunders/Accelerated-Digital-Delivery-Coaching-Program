@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Accelerated_Digital_Delivery_Coaching_Program.Models;
+using Accelerated_Digital_Delivery_Coaching_Program.ViewModels;
 
 namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
 {
@@ -139,6 +140,30 @@ namespace Accelerated_Digital_Delivery_Coaching_Program.Controllers
 
             return View(team);
         }
+
+        public JsonResult VisualiseTeamsVelocity()
+        {
+            return Json(Result());
+        }
+
+        public List<TeamVelocity> Result()
+        {
+            List<TeamVelocity> totVelocity = new List<TeamVelocity>();
+            var Iteration = _context.Iterations.OrderBy(b => b.IterationName).ToArray();
+            foreach (var item in Iteration)
+            {
+                totVelocity.Add(new TeamVelocity()
+                {
+                    TeamIterationName = item.IterationName,
+                    IncrementDeliveredVelocity = item.CompletedWork
+
+                });
+
+            }
+            return totVelocity;
+
+        }
+
 
         // POST: Teams/Delete/5
         [HttpPost, ActionName("Delete")]

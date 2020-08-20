@@ -4,6 +4,50 @@
     ViewData["Title"] = "Details";
 }
 
+<script>
+
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                url: '@Url.Action("VisualiseTeamsVelocity", "Teams")',
+                success: function (result) {
+                    google.charts.load('current', {
+                        'packages': ['corechart']
+                    });
+                    google.charts.setOnLoadCallback(function () {
+                        drawChart(result);
+                    });
+                }
+            });
+        });
+        function drawChart(result) {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'teamIterationName');
+            data.addColumn('number', 'incrementDeliveredVelocity');
+            data.addColumn({ role: 'style' });
+            data.addColumn({ role: 'annotation' });
+            var dataArray = [];
+            $.each(result, function (i, obj) {
+                dataArray.push([obj.teamIterationName, obj.incrementDeliveredVelocity, 'blue', obj.incrementDeliveredVelocity.toString()]);
+            });
+            data.addRows(dataArray);
+
+            var columnChartOptions = {
+                title: "Delivered Velocity",
+                width: 1000,
+                height: 400,
+                bar: {groupWidth: "75%"}
+            }
+
+
+            var columnChart = new google.visualization.ColumnChart(document.getElementById('teamchart_div'));
+            columnChart.draw(data, columnChartOptions);
+        }
+</script>
+
+
 <h1>Details</h1>
 
 <div>
@@ -34,3 +78,4 @@
     <a asp-action="Edit" asp-route-id="@Model.TeamID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+<div id="teamchart_div"></div>
